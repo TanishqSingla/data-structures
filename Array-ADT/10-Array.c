@@ -10,7 +10,7 @@ int Rearrange(Array *arr)
     while (arr->arr[i] < 0)
       i++;
     while (arr->arr[j] >= 0)
-      j++;
+      j--;
     if (i < j)
       swap(&arr->arr[i], &arr->arr[j]);
   }
@@ -18,5 +18,10 @@ int Rearrange(Array *arr)
 
 int main()
 {
+  Array arr = {{2, -3, 25, 10, -15, -7}, 10, 6};
+
+  Rearrange(&arr);
+
+  Display(arr);
   return 0;
 }
