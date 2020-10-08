@@ -14,7 +14,7 @@ void Set(Array *arr, int index, int val)
     arr->arr[index] = val;
 }
 
-int max(Array arr)
+int Max(Array arr)
 {
   int max = arr.arr[0];
   for (int i = 0; i < arr.length; i++)
@@ -25,7 +25,7 @@ int max(Array arr)
   return max;
 }
 
-int min(Array arr)
+int Min(Array arr)
 {
   int min = arr.arr[0];
   for (int i = 0; i < arr.length; i++)
@@ -36,9 +36,29 @@ int min(Array arr)
   return min;
 }
 
+int Sum(Array arr)
+{
+  int sum = 0;
+  for (int i = 0; i < arr.length; i++)
+    sum += arr.arr[i];
+
+  return sum;
+}
+
+float Avg(Array arr)
+{
+  return (float)Sum(arr) / arr.length;
+}
+
 int main()
 {
   Array arr = {{2, 3, 4, 5, 6}, 10, 5};
 
+  printf("%d\n", Get(arr, 2));
+  Set(&arr, 2, 10);
+  printf("%d\n", Max(arr));
+  printf("%d\n", Min(arr));
+  printf("%d\n", Sum(arr));
+  printf("%f\n", Avg(arr));
   Display(arr);
 }
