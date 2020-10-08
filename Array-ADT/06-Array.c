@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include "Array.h"
 
-int BinarySearch(struct Array arr, int key)
+int BinarySearch(Array arr, int key)
 {
   int low, mid, high;
   low = 0;
@@ -50,7 +50,7 @@ int r_BinarySearch(int arr[], int low, int high, int key)
 
 int main()
 {
-  struct Array arr = {{2, 3, 4, 5, 6}, 10, 5};
+  Array arr = {{2, 3, 4, 5, 6}, 10, 5};
 
   printf("%d\n", BinarySearch(arr, 5));
   printf("%d\n", r_BinarySearch(arr.arr, 0, arr.length, 5));
