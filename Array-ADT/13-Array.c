@@ -16,7 +16,7 @@ Array *Union_for_sorted(Array *arr1, Array *arr2)
       i++;
     else if (arr2->arr[j] < arr1->arr[i])
       j++;
-    else
+    else //Copying element to array if equal
     {
       arr3->arr[k++] = arr1->arr[i++];
       j++;
@@ -32,7 +32,7 @@ Array *Union_for_sorted(Array *arr1, Array *arr2)
 int main()
 {
   Array arr1 = {{2, 6, 10, 15, 25}, 10, 5};
-  Array arr2 = {{3, 6, 7, 18, 20}, 10, 5};
+  Array arr2 = {{3, 6, 7, 15, 20}, 10, 5};
   Array *arr3;
 
   arr3 = Union_for_sorted(&arr1, &arr2);
