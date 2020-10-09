@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "Array.h"
 
-void Insert(struct Array *arr, int index, int val)
+void Insert(Array *arr, int index, int val)
 {
   if (index >= 0 && index <= arr->length)
   {
@@ -15,7 +15,7 @@ void Insert(struct Array *arr, int index, int val)
 int main()
 {
   //Initializing array so that we won't have to input everytime just to test the program
-  struct Array arr = {{2, 3, 4, 5, 6}, 20, 5};
+  Array arr = {{2, 3, 4, 5, 6}, 20, 5};
 
   Insert(&arr, 5, 10);
   Display(arr);

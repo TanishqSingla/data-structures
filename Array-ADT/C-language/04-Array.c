@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "Array.h"
 
-int Delete(struct Array *arr, int index)
+int Delete(Array *arr, int index)
 {
   int x = 0;
 
@@ -20,7 +20,7 @@ int Delete(struct Array *arr, int index)
 int main()
 {
   //Initializing array so that we won't have to input everytime just to test the program
-  struct Array arr = {{2, 3, 4, 5, 6}, 20, 5};
+  Array arr = {{2, 3, 4, 5, 6}, 20, 5};
 
   printf("%d\n", Delete(&arr, 4));
   Display(arr);
