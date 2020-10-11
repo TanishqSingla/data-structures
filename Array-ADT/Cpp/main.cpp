@@ -72,11 +72,39 @@ public:
     //Returning -1 if the element is not found
     return -1;
   }
-  int BinarySearch();
-  int Get();
+  int BinarySearch(int key)
+  {
+    int low, mid, high;
+    low = 0;
+    high = length - 1;
+
+    while (low <= high)
+    {
+      mid = (low + high) / 2;
+      if (key == arr[mid])
+        return mid;
+      else if (key < arr[mid])
+        high = mid - 1;
+      else
+        low = mid + 1;
+    }
+
+    return -1;
+  }
+  int Get(int index)
+  {
+    if (index >= 0 && index < length)
+      return arr[index];
+    return -1;
+  }
   int Set();
   int Max();
   int Min();
   int Sum();
   float Avg();
 };
+
+int main()
+{
+  return 0;
+}
