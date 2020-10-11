@@ -133,6 +133,46 @@ float Avg(Array arr)
   return (float)Sum(arr) / arr.length;
 }
 
+void Reverse(Array *arr)
+{
+  /* 
+    In this method we swap the index element with (length - index) element
+  */
+  for (int i = 0, j = arr->length - 1; i < j; i++, j--)
+  {
+    swap(&arr->arr[i], &arr->arr[j]);
+  }
+}
+
+Array *Union(Array *arr1, Array *arr2)
+{
+  Array *arr3 = (Array *)malloc(sizeof(Array));
+
+  int found;
+
+  int k = 0;
+  for (int i = 0; i < arr1->length; i++)
+    arr3->arr[k++] = arr1->arr[i];
+
+  for (int i = 0; i < arr2->length; i++)
+  {
+    found = 0;
+    for (int j = 0; j < k; j++)
+    {
+      if (arr3->arr[j] == arr2->arr[i])
+      {
+        found = 1;
+        break;
+      }
+    }
+    if (found == 0)
+      arr3->arr[k++] = arr2->arr[i];
+  }
+
+  arr3->length = k;
+  return arr3;
+}
+
 int main()
 {
 
@@ -143,6 +183,14 @@ int main()
   scanf("%d", &arr.size);
 
   arr.arr = (int *)malloc(arr.size * sizeof(int));
+
+  printf("Enter number of elements you want to enter ");
+  scanf("%d", arr.length);
+
+  printf("Enter elements\n");
+
+  for (int i = 0; i < arr.length; i++)
+    scanf("%d ", &arr.arr[i]);
 
   do
   {
@@ -155,15 +203,14 @@ int main()
     printf("6. Search an element (Binary)");
     printf("7. Get value at index");
     printf("8. Set value at index");
-    printf("9. Set value at index");
-    printf("10. Find Maximum");
-    printf("11. Find Minimum");
-    printf("12. Sum of array");
-    printf("13. Average of array");
-    printf("14. Reverse the elements");
-    printf("15. Union of arrays");
-    printf("16. Intersection of arrays");
-    printf("17. Difference of two arrays");
+    printf("9. Find Maximum");
+    printf("10. Find Minimum");
+    printf("11. Sum of array");
+    printf("12. Average of array");
+    printf("13. Reverse the elements");
+    printf("14. Union of arrays");
+    printf("15. Intersection of arrays");
+    printf("16. Difference of two arrays");
 
     switch (ch)
     {
@@ -199,8 +246,47 @@ int main()
       index = BinarySearch(arr, val);
       index == -1 ? printf("No such value found") : printf("Value found at index", index);
       break;
+    case 7:
+      printf("Enter index ");
+      scanf("%d", &index);
+      val = Get(arr, index);
+      val == -1 ? printf("No such value found") : printf("Value found is %d", val);
+      break;
+    case 8:
+      printf("Enter index ");
+      scanf("%d", index);
+      printf("Enter value ");
+      scanf("%d", val);
+      break;
+    case 9:
+      printf("Max value is %d", Max(arr));
+      break;
+    case 10:
+      printf("Min value is %d", Min(arr));
+      break;
+    case 11:
+      printf("Sum of array %d", Sum(arr));
+      break;
+    case 12:
+      printf("Average of array %f", Avg(arr));
+      break;
+    case 13:
+      Reverse(&arr);
+      Display(arr);
+      break;
+    case 14:
+      Array arr2;
+      printf("Enter size of second array ");
+      scanf("%d", arr2.size);
+      printf("Enter number of elements in second array ");
+      scanf("%d", arr2.length);
+      for (int i = 0; i < arr.length; i++)
+        scanf("%d", &arr2.arr[i]);
+      Array *arr3;
+      arr3 = Union(&arr, &arr2);
+      Display(*arr3);
+      break;
     }
-
   } while (ch != 0);
 
   return 0;
