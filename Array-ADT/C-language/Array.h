@@ -6,7 +6,9 @@ struct Array
   int length;
 };
 
-void Display(struct Array arr)
+#define Array struct Array
+
+void Display(Array arr)
 {
   printf("Elements are \n");
   for (int i = 0; i < arr.length; ++i)
@@ -22,5 +24,3 @@ void swap(int *x, int *y)
   *x = *y;
   *y = temp;
 }
-
-#define Array struct Array
