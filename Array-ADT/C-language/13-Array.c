@@ -45,6 +45,8 @@ Array *Intersection(Array *arr1, Array *arr2)
   }
   arr3->length = k;
   arr3->size = 10;
+
+  return arr3;
 }
 
 int main()

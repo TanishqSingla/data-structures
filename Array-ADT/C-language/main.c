@@ -8,6 +8,14 @@ struct Array
   int length;
 };
 
+void swap(int *x, int *y)
+{
+  int temp;
+  temp = *x;
+  *x = *y;
+  *y = temp;
+}
+
 #define Array struct Array
 
 void Display(Array arr)
@@ -144,6 +152,28 @@ void Reverse(Array *arr)
   }
 }
 
+Array *Merge(Array *arr1, Array *arr2)
+{
+  int i = 0, j = 0, k = 0;
+  Array *arr3 = (Array *)malloc(sizeof(Array));
+  while (i < arr1->length && j < arr2->length)
+  {
+    if (arr1->arr[i] < arr2->arr[j])
+      arr3->arr[k++] = arr1->arr[i++];
+    else
+      arr3->arr[k++] = arr2->arr[j++];
+  }
+  for (; i < arr1->length; i++)
+    arr3->arr[k++] = arr1->arr[i];
+  for (; j < arr2->length; j++)
+    arr3->arr[k++] = arr2->arr[j];
+
+  arr3->length = arr1->length + arr1->length;
+  arr3->size = arr1->size + arr2->size;
+
+  return arr3;
+}
+
 Array *Union(Array *arr1, Array *arr2)
 {
   Array *arr3 = (Array *)malloc(sizeof(Array));
@@ -173,10 +203,58 @@ Array *Union(Array *arr1, Array *arr2)
   return arr3;
 }
 
+Array *Intersection(Array *arr1, Array *arr2)
+{
+  Array *arr3 = (Array *)malloc(sizeof(Array));
+
+  int k = 0;
+
+  for (int i = 0; i < arr1->length; i++)
+  {
+    for (int j = 0; j < arr2->length; j++)
+    {
+      if (arr1->arr[i] == arr2->arr[j])
+        arr3->arr[k++] = arr1->arr[i];
+    }
+  }
+  arr3->length = k;
+  arr3->size = 10;
+
+  return arr3;
+}
+Array *Difference(Array *arr1, Array *arr2)
+{
+  int k = 0;
+  Array *arr3 = (Array *)malloc(sizeof(Array));
+
+  int flag;
+
+  for (int i = 0; i < arr1->length; i++)
+  {
+    flag = 0;
+    for (int j = 0; j < arr2->length; j++)
+    {
+      if (arr1->arr[i] == arr2->arr[j])
+      {
+        flag = 1;
+        break;
+      }
+    }
+    if (flag == 0)
+      arr3->arr[k++] = arr1->arr[i];
+  }
+
+  arr3->length = k;
+  arr3->size = 10;
+
+  return arr3;
+}
+
 int main()
 {
 
-  Array arr;
+  Array arr, arr2;
+  Array *arr3;
   int ch, index, val;
 
   printf("Enter Size of Array ");
@@ -185,7 +263,7 @@ int main()
   arr.arr = (int *)malloc(arr.size * sizeof(int));
 
   printf("Enter number of elements you want to enter ");
-  scanf("%d", arr.length);
+  scanf("%d", &arr.length);
 
   printf("Enter elements\n");
 
@@ -194,6 +272,7 @@ int main()
 
   do
   {
+
     printf("Menu\n");
     printf("1. Display elements");
     printf("2. Append value");
@@ -208,9 +287,13 @@ int main()
     printf("11. Sum of array");
     printf("12. Average of array");
     printf("13. Reverse the elements");
-    printf("14. Union of arrays");
-    printf("15. Intersection of arrays");
-    printf("16. Difference of two arrays");
+    printf("14. Merge Arrays");
+    printf("15. Union of arrays");
+    printf("16. Intersection of arrays");
+    printf("17. Difference of two arrays");
+
+    printf("Enter your choice ");
+    scanf("%d", &ch);
 
     switch (ch)
     {
@@ -244,7 +327,7 @@ int main()
       printf("Enter value ");
       scanf("%d", &val);
       index = BinarySearch(arr, val);
-      index == -1 ? printf("No such value found") : printf("Value found at index", index);
+      index == -1 ? printf("No such value found") : printf("Value found at index %d", index);
       break;
     case 7:
       printf("Enter index ");
@@ -254,9 +337,9 @@ int main()
       break;
     case 8:
       printf("Enter index ");
-      scanf("%d", index);
+      scanf("%d", &index);
       printf("Enter value ");
-      scanf("%d", val);
+      scanf("%d", &val);
       break;
     case 9:
       printf("Max value is %d", Max(arr));
@@ -275,15 +358,43 @@ int main()
       Display(arr);
       break;
     case 14:
-      Array arr2;
       printf("Enter size of second array ");
-      scanf("%d", arr2.size);
+      scanf("%d", &arr2.size);
       printf("Enter number of elements in second array ");
-      scanf("%d", arr2.length);
+      scanf("%d", &arr2.length);
       for (int i = 0; i < arr.length; i++)
         scanf("%d", &arr2.arr[i]);
-      Array *arr3;
+      arr3 = Merge(&arr, &arr2);
+      Display(*arr3);
+      break;
+    case 15:
+      printf("Enter size of second array ");
+      scanf("%d", &arr2.size);
+      printf("Enter number of elements in second array ");
+      scanf("%d", &arr2.length);
+      for (int i = 0; i < arr.length; i++)
+        scanf("%d", &arr2.arr[i]);
       arr3 = Union(&arr, &arr2);
+      Display(*arr3);
+      break;
+    case 16:
+      printf("Enter size of second array ");
+      scanf("%d", &arr2.size);
+      printf("Enter number of elements in second array ");
+      scanf("%d", &arr2.length);
+      for (int i = 0; i < arr.length; i++)
+        scanf("%d", &arr2.arr[i]);
+      arr3 = Intersection(&arr, &arr2);
+      Display(*arr3);
+      break;
+    case 17:
+      printf("Enter size of second array ");
+      scanf("%d", &arr2.size);
+      printf("Enter number of elements in second array ");
+      scanf("%d", &arr2.length);
+      for (int i = 0; i < arr.length; i++)
+        scanf("%d", &arr2.arr[i]);
+      arr3 = Difference(&arr, &arr2);
       Display(*arr3);
       break;
     }
