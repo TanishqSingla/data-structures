@@ -1,9 +1,10 @@
 #include <iostream>
 
+template <class T>
 class Array
 {
 private:
-  int *arr;
+  T *arr;
   int size;
   int length;
 
@@ -11,13 +12,13 @@ public:
   Array()
   {
     size = 10;
-    arr = new int[10];
+    arr = new T[10];
     length = 0;
   }
   Array(int s)
   {
     size = s;
-    arr = new int[size];
+    arr = new T[size];
     length = 0;
   }
   ~Array()
@@ -33,7 +34,7 @@ public:
     std::cout << std::endl;
   }
 
-  void Insert(int index, int val)
+  void Insert(int index, T val)
   {
     if (index >= 0 && index <= length)
     {
@@ -44,7 +45,7 @@ public:
     }
   }
 
-  int Delete(int index)
+  T Delete(int index)
   {
     int x;
     if (index >= 0 && index < length)
@@ -60,7 +61,7 @@ public:
 
 int main()
 {
-  Array arr(10);
+  Array<int> arr(10);
 
   arr.Insert(0, 5);
   arr.Insert(1, 6);
