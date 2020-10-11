@@ -97,11 +97,43 @@ public:
       return arr[index];
     return -1;
   }
-  int Set();
-  int Max();
-  int Min();
-  int Sum();
-  float Avg();
+  void Set(int index, int val)
+  {
+    if (index >= 0 && index < length)
+      arr[index] = val;
+  }
+  int Max()
+  {
+    int max = arr[0];
+    for (int i = 0; i < length; i++)
+    {
+      if (max < arr[i])
+        max = arr[i];
+    }
+    return max;
+  }
+  int Min()
+  {
+    int min = arr[0];
+    for (int i = 0; i < length; i++)
+    {
+      if (min > arr[i])
+        min = arr[i];
+    }
+    return min;
+  }
+  int Sum()
+  {
+    int sum = 0;
+    for (int i = 0; i < length; i++)
+      sum += arr[i];
+
+    return sum;
+  }
+  float Avg()
+  {
+    return (float)Sum() / length;
+  }
 };
 
 int main()
