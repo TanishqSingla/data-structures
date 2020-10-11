@@ -13,18 +13,24 @@ private:
     y = temp;
   }
 
-  Array(int s, int l)
+public:
+  Array()
+  {
+    size = 10;
+    length = 0;
+    arr = new int[size];
+  }
+
+  Array(int s)
   {
     size = s;
-    length = l;
+    length = 0;
     arr = new int[size];
   }
   ~Array()
   {
     delete[] arr;
   }
-
-public:
   void Display()
   {
     std::cout << "Elements are" << std::endl;
