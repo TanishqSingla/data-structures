@@ -10,6 +10,7 @@ struct Array
 
 void Append(struct Array *arr, int val)
 {
+  //Checking if array is full
   if (arr->length < arr->size)
     arr->arr[arr->length++] = val;
 }
