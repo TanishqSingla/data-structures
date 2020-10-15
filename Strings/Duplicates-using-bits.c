@@ -9,8 +9,8 @@ int main()
   for (int i = 0; a[i] != '\0'; i++)
   {
     x = 1;
-    x <<= a[i] - 97;
-    if (x & H > 0)
+    x = x << (a[i] - 97);
+    if ((x & H) > 0)
       printf("%c is duplicate", a[i]);
     else
       H = x | H;
