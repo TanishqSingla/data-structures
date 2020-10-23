@@ -24,7 +24,7 @@ int main()
 
   create(arr, 5);
 
-  printf("Sum is %d\n", count(first));
-  printf("Sum is %d", count_r(first));
+  printf("Number of elements are %d\n", count(first));
+  printf("Number of elements are %d", count_r(first));
   return 0;
 }
