@@ -1,3 +1,5 @@
+//Maximum value in a linked list
+
 #include "linkedList.h"
 #include <limits.h>
 

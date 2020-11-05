@@ -1,3 +1,5 @@
+// counting elements in a linked list
+
 #include "linkedList.h"
 
 int count(struct Node *p)

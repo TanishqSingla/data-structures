@@ -1,3 +1,5 @@
+//Sum of all elments of a linked list
+
 #include "linkedList.h"
 
 int sum(struct Node *p)
