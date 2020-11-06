@@ -4,6 +4,9 @@ void insert(Node *p, int index, int val)
 {
     Node *temp;
 
+    if (index < 0 || index > length(Head))
+        return;
+
     if (index == 0)
     {
         temp = (Node *)malloc(sizeof(Node));

@@ -22,3 +22,14 @@ void Display(Node *h)
         h = h->next;
     } while (h != Head);
 }
+
+int length(Node *p)
+{
+    int length = 0;
+    do
+    {
+        p = p->next;
+        length++;
+    } while (p != Head);
+    return length;
+}
