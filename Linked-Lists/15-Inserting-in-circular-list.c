@@ -39,4 +39,13 @@ void insert(Node *p, int index, int val)
 
 int main()
 {
+    int arr[] = {1, 2, 3, 5};
+
+    create(arr, 4);
+
+    insert(Head, 2, 4);
+
+    Display(Head);
+
+    return 0;
 }
