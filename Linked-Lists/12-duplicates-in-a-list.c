@@ -2,10 +2,6 @@
 
 #define Node struct Node
 
-void remove_duplicate()
-{
-}
-
 //for sorted
 void remove_duplicate_s(Node *p)
 {
