@@ -33,3 +33,14 @@ void Display(struct Node *p)
     p = p->next;
   }
 }
+
+int count(struct Node *p)
+{
+  int count = 0;
+  while (p)
+  {
+    count++;
+    p = p->next;
+  }
+  return count;
+}
