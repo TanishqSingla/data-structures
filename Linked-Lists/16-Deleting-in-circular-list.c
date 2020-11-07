@@ -9,11 +9,19 @@ void Delete(Node *p, int index)
         return;
     if (index == 0)
     {
-        do
-        {
-            q = p;
+        while (p->next != Head)
             p = p->next;
-        } while (p != Head);
+        if (Head == p) // if the head is the only node
+        {
+            free(Head);
+            Head = NULL;
+        }
+        else
+        {
+            p->next = Head->next;
+            free(Head);
+            Head = p->next;
+        }
     }
     else
     {
