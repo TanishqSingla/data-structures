@@ -6,20 +6,31 @@ void insert(Node *p, int index, int val)
 
     if (index < 0 || index > length(p))
         return;
-
-    for (int i = 0; i < index; i++)
+    if (index == 0)
     {
-        q = p;
-        p = p->next;
+        Node *temp = (Node *)malloc(sizeof(Node));
+        temp->data = val;
+        temp->prev = p->prev;
+        p->prev = temp;
+        temp->next = p;
+        first = temp;
     }
+    else
+    {
+        for (int i = 0; i < index; i++)
+        {
+            q = p;
+            p = p->next;
+        }
 
-    Node *temp = (Node *)malloc(sizeof(Node));
-    temp->data = val;
+        Node *temp = (Node *)malloc(sizeof(Node));
+        temp->data = val;
 
-    q->next = temp;
-    temp->next = p;
-    p->prev = temp;
-    temp->prev = q;
+        q->next = temp;
+        temp->next = p;
+        p->prev = temp;
+        temp->prev = q;
+    }
 }
 
 int main()
@@ -28,7 +39,7 @@ int main()
 
     create(arr, 4);
 
-    insert(first, 2, 4);
+    insert(first, 0, 4);
 
     Display(first);
 
