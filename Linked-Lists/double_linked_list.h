@@ -51,16 +51,3 @@ int length(Node *p)
     }
     return len;
 }
-
-int main()
-{
-    int arr[] = {1, 2, 3, 4, 5};
-
-    create(arr, 5);
-
-    Display(first);
-
-    printf("length is %d", length(first));
-
-    return 0;
-}
